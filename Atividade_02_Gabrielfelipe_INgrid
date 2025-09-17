@@ -1,0 +1,175 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package atividade02_gabrielfelipe_ingridk;
+import java.util.Scanner;
+import java.lang.Math;
+/**
+ *
+ * @author Aluno
+ */
+public class Atividade02_Gabrielfelipe_Ingridk {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        // 1
+        System.out.println("Ingrid saptona");
+        Scanner entrada = new Scanner(System.in);
+//        double raio,area,circunf;
+//        
+//        System.out.print("Digite o valor do raio do circulo : ");
+//        raio = entrada.nextDouble();
+//        
+//        area = Math.PI*(Math.pow(raio,2));
+//        circunf = 2*Math.PI*raio;
+//        
+//        System.out.println("Resultado área:"+ area);
+//        System.out.println("Resultado circuferencia"+ circunf);
+//        
+//        // 2
+//        
+//        double altura,peso, sm;
+//        
+//        System.out.print("Digite seu peso :");
+//        peso = entrada.nextDouble();
+//        
+//        System.out.print("Digite sua altura :");
+//        altura = entrada.nextDouble();
+//        
+//        sm = peso / altura ;
+//        
+//        System.out.println("O seu IMC é : " + sm  );
+//        
+//        
+//        // 3 
+//        
+//        double cateto1,cateto2,hip;
+//        
+//        System.out.print("Digite o cateto");
+//        cateto1 = entrada.nextDouble();
+//        
+//        System.out.print("Digite o cateto");
+//        cateto2 = entrada.nextDouble();
+//        
+//        hip = Math.pow(cateto1,2) + Math.pow(cateto2,2);   
+//        
+//        System.out.println("O valor da hipotenusa : " + Math.pow(hip,2)  );
+//        ;;
+        //4
+//        
+//
+//        double real,dolar,cotacao,resto,calc;
+//        System.out.print("Quanto da moeda real voce quer trasnformar em dolares? ");
+//        real = entrada.nextDouble();
+//
+//        dolar = 5.32;
+//        
+//        cotacao = real / dolar;
+//        
+//        calc = Math.floor(cotacao);
+//
+//        resto = (cotacao-calc)* dolar;
+//        System.out.println("O seu dinheiro em dolares é : " + Math.floor(cotacao));
+//        System.out.println("O seu troco em real é : " + resto);
+//           
+      //5
+      
+      
+//        int n,j1,j2,s;
+//        
+//        System.out.print("Insira quantas vezes o dado foi jogado : ");
+//        n = entrada.nextInt();
+//        
+//        System.out.print("Insira o 1º valor :  ");
+//        j1= entrada.nextInt();
+//        
+//        System.out.print("Insira o 2º valor :  ");
+//        j2= entrada.nextInt();
+//        
+//        s = (j1 + j2 )/n;
+//        System.out.println("A média é " + s);
+//        
+//        System.out.print("Nº maior é " + Math.max(j1, j2));
+//        
+//        System.out.print("Nº menor é " + Math.min(j1, j2));
+        
+//       Questão 6
+//        double graus,sen,cos,tan,rad;
+//        graus = entrada.nextDouble();
+//        rad = Math.toRadians(graus);
+//        sen = Math.sin(rad);
+//        cos = Math.cos(rad);
+//        tan = Math.tan(rad);
+//
+//          System.out.println("O resultado de seno é: " +sen);
+//          System.out.println("O resultado de cosseno é: " +cos);
+//          System.out.println("O resultado da tangente é: " +tan);
+
+//      Questão 7
+//        double d,x1,x2,y1,y2;
+//        System.out.print("Dê a coordenada de x1, x2, y1 e y2: ");
+//        x1 = entrada.nextDouble();
+//        x2 = entrada.nextDouble();
+//        y1 = entrada.nextDouble();
+//        y2 = entrada.nextDouble();
+//        
+//        d = Math.sqrt(Math.pow((x2 - x1),2) + Math.pow((y2 - y1),2));
+//        
+//        System.out.println("A distancia entre as coordenadas é: " + d);
+        
+
+//        Questão 8
+
+//        double numb,numb2,numb3,med,sum,dif;
+//        
+//        System.out.print("digite três números :");
+//        numb = entrada.nextDouble();
+//        numb2 = entrada.nextDouble();
+//        numb3 = entrada.nextDouble();
+//        
+//        med = (numb+numb2+numb3)/ 3;
+//        
+//        sum = Math.abs(numb)+ Math.abs(numb2)+Math.abs(numb3);
+//        
+//        dif = Math.abs(numb - numb3);
+//        
+//        System.out.println("A média aritmetica é: "+med);
+//        System.out.println("A soma absoluta é: "+sum);
+//        System.out.println("A maior diferença é: "+dif);
+ 
+     
+////      Questão 9
+//        
+//        int a,b,c;
+//        double x1,x2,delta;
+//        
+//        System.out.print("Me fale o valor de a, b ,c :");
+//        a = entrada.nextInt();
+//        b = entrada.nextInt();
+//        c = entrada.nextInt();
+//        delta= Math.pow(b,2)-(4*a*c);
+//        x1 = (- b) + Math.sqrt(delta)/(2*a);
+//        x2 = (- b) - Math.sqrt(delta)/(2*a);
+//        
+//        System.out.print("O valor de delta é :" + delta);
+//        System.out.print("O valor positivo é :" + x1);
+//        System.out.print("O valor negativo é :" + x2);
+           
+
+//        Questão 10
+
+//          double far,cel;
+//          System.out.print("Digite o valor em Fahrenheit F: ");
+//          far = entrada.nextDouble();
+//          cel = (far-32)/1.8;
+//          
+//          System.out.print("O valor de F"+far+"em Fahrenheit é equivalente a C: "+cel);
+        
+        // TODO code application logic here
+    }
+    
+}
