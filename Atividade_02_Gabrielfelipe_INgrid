@@ -17,7 +17,7 @@ public class Atividade02_Gabrielfelipe_Ingridk {
     public static void main(String[] args) {
         
         // 1
-        System.out.println("Ingrid saptona");
+     
         Scanner entrada = new Scanner(System.in);
 //        double raio,area,circunf;
 //        
@@ -173,3 +173,4 @@ public class Atividade02_Gabrielfelipe_Ingridk {
     }
     
 }
+
