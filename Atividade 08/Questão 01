@@ -1,0 +1,51 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package equacaosegundograu;
+import java.lang.Math;
+/**
+ *
+ * @author Aluno
+ */
+public class EquacaoSegundoGrau {
+     
+    private double a;
+    private double b;
+    private double c;
+    
+public EquacaoSegundoGrau(double a , double b , double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+public double calculodelta(){
+    return b * b - 4 * a * c;
+    
+}
+
+public void calculoraiz(){
+    double delta = calculodelta();
+
+if (delta  <  0){
+    System.out.println("Não a raiz real");
+} else {
+    double x1 = ( -b + Math.sqrt(delta))/(2 * a);
+    double x2 = ( -b - Math.sqrt(delta))/(2 * a);
+
+    System.out.println("x1 = " + x1);
+    System.out.println("x2 = " + x2);
+}
+    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+       EquacaoSegundoGrau eq = new EquacaoSegundoGrau(-3, 4, 2);
+       eq.calculoraiz();
+        
+// TODO code application logic here
+    }
+    
+}
