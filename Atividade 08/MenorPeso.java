@@ -1,36 +1,38 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package menorpeso;
 import java.util.Scanner;
-/**
- *
- * @author Aluno
- */
+
 public class MenorPeso {
-    
-    private double peso[];
-    private double pesopessoa;
-public MenorPeso(double pesopessoa){
-    this.peso = new double[10];
-    this.pesopessoa = pesopessoa;
-}
-public double Peso(){
-    Scanner input = new Scanner(System.in); 
-    for(int i = 0 ; i < 10 ; i++){
-        System.out.println("Qual o peso da " + (i+1)+ "º pessoa : ");
-        peso[i] = input.nextDouble(); 
-            }
-}
-public double peso {
-    
-}
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    private double[] peso;
+
+    public MenorPeso() {
+        this.peso = new double[10];
     }
+
+   
+    public void lerPesos() {
+        Scanner input = new Scanner(System.in);
+        for (int i = 0; i < peso.length; i++) {
+            System.out.print("Qual o peso da " + (i + 1) + "º pessoa: ");
+            peso[i] = input.nextDouble();
+        }
+    }
+
     
+    public double menorPeso() {
+        double menor = peso[0];
+        for (int i = 1; i < peso.length; i++) {
+            if (peso[i] < menor) {
+                menor = peso[i];
+            }
+        }
+        return menor;
+    }
+
+   
+    public static void main(String[] args) {
+        MenorPeso mp = new MenorPeso(); 
+        mp.lerPesos(); 
+        double menor = mp.menorPeso(); 
+        System.out.println("O menor peso é: " + menor + " kg");
+    }
 }
