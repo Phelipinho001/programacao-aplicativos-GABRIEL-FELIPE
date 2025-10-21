@@ -1,0 +1,15 @@
+package atividade.agenda;
+
+public class Validador {
+    public static boolean validarTelefone(String telefone) {
+        return telefone.matches("\\d{10,11}");
+    }
+
+    public static boolean validarEmail(String email) {
+        return email.contains("@") && email.contains(".");
+    }
+
+    public static boolean validarNome(String nome) {
+        return !nome.trim().isEmpty();
+    }
+}
