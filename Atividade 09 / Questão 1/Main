@@ -1,0 +1,8 @@
+package atividade.agenda;
+
+public class Atividade09AvelinoeGabrielFelipe{
+    public static void main(String[] args) {
+        AgendaEletronica agenda = new AgendaEletronica();
+        agenda.menu();
+    }
+}
