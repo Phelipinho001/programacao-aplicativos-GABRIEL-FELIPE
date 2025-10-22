@@ -1,0 +1,123 @@
+package menu;
+
+import java.util.Scanner;
+
+public class REGISTRAR {
+    private int[] tipo;
+    private String[] placa;
+    private String[] nome;
+    private String[] marca;
+    private String[] modelo;
+    private String[] cor;
+    private int[] hora;
+    private int[] minutos;
+    private int capacidade;
+    private int opc;
+    private int[] horasaida;
+    private int[] minutossaida;
+
+    public REGISTRAR (int capacidade , int opc ) {
+        this.capacidade = capacidade;
+        this.tipo = new int[capacidade];
+        this.placa = new String[capacidade];
+        this.nome = new String[capacidade];
+        this.marca = new String[capacidade];
+        this.modelo = new String[capacidade];
+        this.cor = new String[capacidade];
+        this.hora = new int[capacidade];
+        this.horasaida = new int[capacidade];
+        this.minutos = new int[capacidade];
+        this.minutossaida = new int[capacidade];
+        this.opc = opc;
+    }
+
+    public void menuRegistro() {
+        Scanner entrada = new Scanner(System.in);
+        
+        opc = -1 ;
+        do {
+//            try{
+            System.out.println(" === Menu Principal ===");
+            System.out.println("1 - Registrar Veículo em Vaga");
+            System.out.println("2 - Finalizar Uso do Veículo na Vaga");
+            System.out.println("3 - Consultar Disponibilidade");
+            System.out.println("4 - Consultar Saldo e Histórico de Pagamentos ");
+            System.out.println("0 - Sair ");
+            
+            System.out.println("Escreva a opção desejada :");
+            opc = entrada.nextInt();
+            
+            switch(opc){
+                case 1 -> {
+                    boolean registrado = false;
+                    
+                    for (int i = 0; i < placa.length; i++) {
+                        if (placa[i] == null) {
+                            
+                            System.out.println("=== TIPO DE VEÍCULO ===");
+                            System.out.println("1 - Carro");
+                            System.out.println("2 - Moto");
+                            System.out.println("3 - Caminhão/Caminhonete");
+                            System.out.print("Digite o tipo do veículo: ");
+                            tipo[i] = entrada.nextInt();
+                            
+                            
+                            System.out.print("Digite a placa do veículo: ");
+                            placa[i] = entrada.nextLine();
+                            
+                            System.out.print("Digite o nome do proprietário: ");
+                            nome[i] = entrada.nextLine();
+                            
+                            System.out.print("Digite a marca do veículo: ");
+                            marca[i] = entrada.nextLine();
+                            
+                            System.out.print("Digite o modelo do veículo: ");
+                            modelo[i] = entrada.nextLine();
+                            
+                            System.out.print("Digite a cor do veículo: ");
+                            cor[i] = entrada.nextLine();
+                            
+                            System.out.print("Digite a hora de entrada: ");
+                            hora[i] = entrada.nextInt();
+                            
+                            System.out.print("Digite os minutos de entrada: ");
+                            minutos[i] = entrada.nextInt();
+                            
+                            System.out.println("Veículo registrado com sucesso na vaga " + i );
+                            System.out.println("Codigo do veiculo : " + i );
+                            registrado = true;
+                            break;
+                        }
+                    }
+                    
+                    if (!registrado) {
+                        System.out.println("Todas as vagas estão ocupadas.");
+                    }       }
+                case 2 -> {
+                    for(int i =  0 ; i < placa.length ; i++){
+                        if(placa[i] == null){
+                            System.out.println(" A Vaga" + (i + 1) + "(tipo" + tipo[i] + "): LIVRE"   );
+                        }else {
+                            System.out.println( "A Vaga" + (i + 1) + "(tipo" + tipo[i] + "): OCUPADA   PLACA:" + placa[i]);
+                        }
+                            
+                    }
+                        
+                }
+                case 3 -> {
+                    for(int i = 0 ; i < placa.length ; i++ ){ 
+                        System.out.println(" ---- Veiculos Estacionados ---- ");
+                        System.out.println("codigo" + (i + 1) + " | Placa :" + placa[i] + "| Vaga :" + (i + 1));
+                        System.out.println("Digite a hora do veiculo para saída (0 - 23): "); 
+                        horasaida[i] = entrada.nextInt();
+                        System.out.println("Digite os minutos de saida (0 - 59) ");
+                        minutossaida[i] = entrada.nextInt();
+                    }
+                }
+            }
+        }while(opc != 0);
+        
+   
+    
+    }
+}
