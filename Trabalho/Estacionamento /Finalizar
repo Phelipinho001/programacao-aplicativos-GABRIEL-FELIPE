@@ -1,0 +1,31 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package estacionamento;
+
+/**
+ *
+ * @author Aluno
+ */
+public class Finalizar {
+    
+    
+    public double Fin(int tipo, int minutos){
+        switch(tipo){
+            case 1 -> {
+                if(minutos <= 15 ){
+                    System.out.println("Valor do estacionamento R$6,00 ");
+                }else if (minutos <= 30){
+                    System.out.println("Valor do estacionamento R$17,00");
+                }else if(minutos <= 60){
+                    System.out.println("Valor do estacionamento R$20,00");
+                }else if (minutos > 60 || minutos < 0){
+                    System.out.println("Minutos invalidos");
+                    
+                }
+            }
+            
+        }
+    }
+}
