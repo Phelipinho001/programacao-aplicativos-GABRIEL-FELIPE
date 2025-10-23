@@ -1,0 +1,103 @@
+package estacionamento;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Registrar {
+    private int capacidade;
+    private String[] vaga;
+    private String[] placas;
+    private int[] horasEntrada;
+    private int[] minutosEntrada;
+    private int[] tipos;
+
+    public Registrar(int capacidade) {
+        this.capacidade = capacidade;
+        this.vaga = new String[capacidade];
+        this.placas = new String[capacidade];
+        this.horasEntrada = new int[capacidade];
+        this.minutosEntrada = new int[capacidade];
+        this.tipos = new int[capacidade];
+    }
+
+    public void RegistrarCarro() {
+        Scanner entrada = new Scanner(System.in);
+
+        try {
+            System.out.println("\n=== TIPO DE VEÍCULO ===");
+            System.out.println("1 - Carro");
+            System.out.println("2 - Moto");
+            System.out.println("3 - Caminhão/Caminhonete");
+            System.out.print("Digite o tipo do veículo (0 para sair): ");
+            int tipo = entrada.nextInt();
+
+            if (tipo == 0) return;
+
+            if (tipo < 1 || tipo > 3) {
+                System.out.println("Tipo inválido. Por favor, digite 1, 2 ou 3.");
+                return;
+            }
+
+            int codigo = -1;
+            for (int i = 0; i < capacidade; i++) {
+                if (vaga[i] == null) {
+                    codigo = i;
+                    break;
+                }
+            }
+
+            if (codigo == -1) {
+                System.out.println("Não há vagas disponíveis para o tipo de veículo selecionado.");
+                return;
+            }
+
+            System.out.print("Digite a placa do veículo: ");
+            placas[codigo] = entrada.next();
+
+            System.out.print("Digite a hora de entrada (0-23): ");
+            int hora = entrada.nextInt();
+            System.out.print("Digite os minutos de entrada (0-59): ");
+            int minutos = entrada.nextInt();
+
+            if (hora < 0 || hora > 23 || minutos < 0 || minutos > 59) {
+                System.out.println("Hora ou minuto inválidos. Por favor, digite valores corretos.");
+                return;
+            }
+
+            horasEntrada[codigo] = hora;
+            minutosEntrada[codigo] = minutos;
+            tipos[codigo] = tipo;
+            vaga[codigo] = "OCUPADO";
+
+            System.out.println("Veículo registrado com sucesso na vaga " + codigo + "!");
+
+        } catch (InputMismatchException e) {
+            System.out.println("Entrada inválida. Digite apenas números.");
+            entrada.nextLine(); 
+        }
+    }
+
+    public String[] getVagas() {
+        return vaga;
+    }
+
+    public int getCapacidade() {
+        return capacidade;
+    }
+
+    public String[] getPlacas() {
+        return placas;
+    }
+
+    public int[] getHorasentrada() {
+        return horasEntrada;
+    }
+
+    public int[] getMinutosentrada() {
+        return minutosEntrada;
+    }
+
+    public int[] getTipos() {
+        return tipos;
+    }
+}
