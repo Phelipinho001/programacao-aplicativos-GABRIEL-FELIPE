@@ -1,0 +1,33 @@
+package estacionamento;
+
+public class Finalizar {
+    public double Fin(int tipo, int minutos) {
+        double valor = 0;
+
+        switch (tipo) {
+            case 1 -> { // Carro
+                if (minutos <= 15) valor = 6;
+                else if (minutos <= 30) valor = 17;
+                else if (minutos <= 60) valor = 20;
+                else valor = (minutos - 60) * 1.35 + 20;
+            }
+
+            case 2 -> { // Moto
+                if (minutos <= 15) valor = 3;
+                else if (minutos <= 30) valor = 7;
+                else if (minutos <= 60) valor = 10;
+                else valor = (minutos - 60) * 1 + 10;
+            }
+
+            case 3 -> { // Caminhão
+                if (minutos <= 15) valor = 16;
+                else if (minutos <= 30) valor = 27;
+                else if (minutos <= 60) valor = 30;
+                else valor = (minutos - 60) * 2.35 + 30;
+            }
+        }
+
+        System.out.printf("Valor calculado: R$ %.2f%n", valor);
+        return valor;
+    }
+}
