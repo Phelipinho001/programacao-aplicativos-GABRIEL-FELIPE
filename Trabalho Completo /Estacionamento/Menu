@@ -1,0 +1,140 @@
+package estacionamento;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Estacionamento {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        Registrar rg = new Registrar(10);
+        Finalizar fina = new Finalizar();
+
+        double[] valor = new double[10];
+        int[] pagamento = new int[10];
+
+        String[] placa = rg.getPlacas();
+        String[] vaga = rg.getVagas();
+        int capacidade = rg.getCapacidade();
+        int[] minutosentrada = rg.getMinutosentrada();
+        int[] horasentrada = rg.getHorasentrada();
+        int[] tipo = rg.getTipos();
+
+        int opc = -1;
+
+        do {
+            try {
+                System.out.println("\n=== MENU PRINCIPAL ===");
+                System.out.println("1 - Registrar Veículo em Vaga");
+                System.out.println("2 - Finalizar Uso do Veículo na Vaga");
+                System.out.println("3 - Consultar Disponibilidade");
+                System.out.println("4 - Consultar Histórico de Pagamentos");
+                System.out.println("0 - Sair");
+                System.out.print("Escolha uma opção: ");
+                opc = entrada.nextInt();
+
+                switch (opc) {
+                    case 1 -> rg.RegistrarCarro();
+
+                    case 2 -> {
+                        boolean encontrou = false;
+                        System.out.println("\n--- Veículos Estacionados ---");
+                        for (int j = 0; j < capacidade; j++) {
+                            if ("OCUPADO".equals(vaga[j])) {
+                                System.out.println("Código: " + j + " | Placa: " + placa[j]);
+                                encontrou = true;
+                            }
+                        }
+
+                        if (!encontrou) {
+                            System.out.println("Não há veículos estacionados no momento.");
+                        } else {
+                            try {
+                                System.out.print("Digite o código da vaga do veículo que vai sair: ");
+                                int codigo = entrada.nextInt();
+
+                                if (codigo < 0 || codigo >= capacidade || !"OCUPADO".equals(vaga[codigo])) {
+                                    System.out.println("Código não encontrado. Tente novamente.");
+                                } else {
+                                    System.out.print("Digite a hora de saída (0-23): ");
+                                    int horasaida = entrada.nextInt();
+                                    System.out.print("Digite os minutos de saída (0-59): ");
+                                    int minutossaida = entrada.nextInt();
+
+                                    if (horasaida < 0 || horasaida > 23 || minutossaida < 0 || minutossaida > 59) {
+                                        System.out.println("Hora ou minuto inválidos. Por favor, digite valores corretos.");
+                                        break;
+                                    }
+
+                                    int entradaTotal = horasentrada[codigo] * 60 + minutosentrada[codigo];
+                                    int saidaTotal = horasaida * 60 + minutossaida;
+
+                                    if (saidaTotal < entradaTotal) {
+                                        System.out.println("A hora de saída não pode ser menor que a de entrada. Tente novamente.");
+                                        break;
+                                    }
+
+                                    int tempoTotal = saidaTotal - entradaTotal;
+                                    System.out.println("\nTempo total: " + tempoTotal + " minutos");
+
+                                    double valorPago = fina.Fin(tipo[codigo], tempoTotal);
+                                    valor[codigo] = valorPago;
+                                    System.out.printf("Valor a pagar: R$ %.2f%n", valorPago);
+
+                                    System.out.println("\n--- FORMA DE PAGAMENTO ---");
+                                    System.out.println("1 - Dinheiro");
+                                    System.out.println("2 - Pix");
+                                    System.out.println("3 - Cartão");
+                                    System.out.print("Escolha a forma de pagamento: ");
+                                    pagamento[codigo] = entrada.nextInt();
+
+                                    vaga[codigo] = null;
+                                    System.out.println("Veículo " + placa[codigo] + " liberado da vaga " + codigo + ".");
+                                }
+                            } catch (InputMismatchException e) {
+                                System.out.println("Entrada inválida. Digite apenas números.");
+                                entrada.nextLine(); // limpa o buffer
+                            }
+                        }
+                    }
+
+                    case 3 -> {
+                        System.out.println("\n--- Situação das Vagas ---");
+                        for (int i = 0; i < capacidade; i++) {
+                            if (vaga[i] == null) {
+                                System.out.println("Vaga " + i + ": LIVRE");
+                            } else {
+                                System.out.println("Vaga " + i + ": OCUPADA | Placa: " + placa[i]);
+                            }
+                        }
+                    }
+
+                    case 4 -> {
+                        System.out.println("\n--- Histórico de Pagamentos ---");
+                        for (int i = 0; i < capacidade; i++) {
+                            if (valor[i] > 0) {
+                                System.out.printf("Vaga %d | Placa: %s | Valor pago: R$ %.2f | Forma: %s%n",
+                                        i, placa[i], valor[i],
+                                        switch (pagamento[i]) {
+                                            case 1 -> "Dinheiro";
+                                            case 2 -> "Pix";
+                                            case 3 -> "Cartão";
+                                            default -> "Não informado";
+                                        });
+                            }
+                        }
+                    }
+
+                    case 0 -> System.out.println("Encerrando o sistema...");
+
+                    default -> System.out.println("Opção inválida. Tente novamente.");
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada inválida. Digite apenas números.");
+                entrada.nextLine(); // limpa o buffer do Scanner
+            }
+
+        } while (opc != 0);
+    }
+}
